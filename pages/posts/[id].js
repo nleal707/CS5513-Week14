@@ -33,7 +33,9 @@ export async function getStaticProps({ params }) {
 // Export an async function to define the list of paths to be statically generated
 export async function getStaticPaths() {
   // Get the array of all possible post IDs
-  const paths = getAllPostIds();
+  // const paths = getAllPostIds();
+  //The returned paths value is now an actual array of route objects instead of a pending Promise, which resolves a runtime error on /posts/[id].
+  const paths = await getAllPostIds();  
   // Return the paths and set fallback to false (shows a 404 for unknown paths)
   return {
     paths,
