@@ -40,13 +40,15 @@ export default function Home ({ allPostsData }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title, featured_image }) => (
+          {/* removed featured_image because it does not exists in json data*/}
+          {allPostsData.map(({ id, date, title /* , featured_image*/ }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>{title}</Link>
               <br />
               <small className={utilStyles.lightText}>
                 <Date dateString={date} />
               </small>
+              {/* removed featured_image because it does not exists in json data
               <br />
               <Image
                 src={featured_image}
@@ -58,6 +60,7 @@ export default function Home ({ allPostsData }) {
                   height: 'auto',
                 }}
               />
+              */}
             </li>
           ))}
         </ul>
