@@ -86,3 +86,24 @@
 .space {
   margin: 10px 0px;
 }
+
+.fieldList {
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.fieldRow {
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.fieldRow dt {
+  font-weight: 600;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.fieldRow dd {
+  margin: 0.25rem 0 0;
+}

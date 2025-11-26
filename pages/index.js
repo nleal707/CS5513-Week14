@@ -1,34 +1,22 @@
-// Import the Head component from Next.js to manage the document's <head>
 import Head from 'next/head';
-// Import the Layout component and siteTitle variable for a consistent page structure and title
-import Layout, { siteTitle } from '../components/layout';
-// Import utility styles for common styling patterns
-import utilStyles from '../styles/utils.module.css';
-// Import a function to fetch and sort blog post data from an external source. Changed from posts.js to posts-json.js.
-import { getSortedPostsData } from '../lib/posts-json';
-// Import the Link component from Next.js for client-side navigation
 import Link from 'next/link';
-// Import a custom Date component to format and display dates
+import Layout, { siteTitle } from '../components/layout';
+import utilStyles from '../styles/utils.module.css';
+import { fetchCptList } from '../lib/wordpress';
 import Date from '../components/date';
-// Import the Image component from Next.js
-import Image from 'next/image'
- 
-// Export an async function called getStaticProps for static site generation (SSG)
+
 export async function getStaticProps() {
-  // Fetch the sorted post data at build time
-  // const allPostsData = getSortedPostsData();
-  const allPostsData = await getSortedPostsData();
-  // Return the fetched data as props to the Home component
+  const contacts = await fetchCptList('contact');
+
   return {
     props: {
-      allPostsData,
+      contacts,
     },
+    revalidate: 60,
   };
 }
- 
-// Define and export the Home component, which serves as the main page
-export default function Home ({ allPostsData }) {
-  // The component returns JSX to be rendered to the screen
+
+export default function Home({ contacts }) {
   return (
     <Layout home>
       <Head>
@@ -36,31 +24,24 @@ export default function Home ({ allPostsData }) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hello, I'm Nick, a full stack web developer.</p>
+        <p>
+          Need products or transactions instead? Visit{' '}
+          <Link href="/products">/products</Link> or{' '}
+          <Link href="/transactions">/transactions</Link>.
+        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <h2 className={utilStyles.headingLg}>Contacts</h2>
         <ul className={utilStyles.list}>
-          {/* removed featured_image because it does not exists in json data*/}
-          {allPostsData.map(({ id, date, title /* , featured_image*/ }) => (
+          {contacts.map(({ id, title, slug, date }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>{title}</Link>
+              <Link href={`/contacts/${slug}`}>{title}</Link>
               <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-              {/* removed featured_image because it does not exists in json data
-              <br />
-              <Image
-                src={featured_image}
-                width={400}
-                height={300}
-                alt="featured image"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                }}
-              />
-              */}
+              {date && (
+                <small className={utilStyles.lightText}>
+                  <Date dateString={date} />
+                </small>
+              )}
             </li>
           ))}
         </ul>
