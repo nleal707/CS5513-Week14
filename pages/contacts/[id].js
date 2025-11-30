@@ -54,13 +54,13 @@ export default function Contact({ contactData }) {
         <Container className={utilStyles.space}>
           <Row className={utilStyles.lightText}>
             <Col className="col-12">
-              <p><strong>Email:</strong> {contactData.email || 'N/A'}</p>
+              <p><strong>Email:</strong> <a href={`mailto:${contactData.email || 'N/A'}`} target="_blank" rel="noopener noreferrer">{contactData.email || 'N/A'}</a></p>
             </Col>
             <Col className="col-12">
-              <p><strong>Phone:</strong> {contactData.phone || 'N/A'}</p>
+              <p><strong>Phone:</strong> <a href={`tel:${contactData.phone || 'N/A'}`} target="_blank" rel="noopener noreferrer">{contactData.phone || 'N/A'}</a></p>
             </Col>
             <Col className="col-12">
-              <p><strong>Company:</strong> {contactData.company || 'N/A'}</p>
+              <p><strong>Company:</strong> <a href={`https://${contactData.website || 'N/A'}`} target="_blank" rel="noopener noreferrer">{contactData.company || 'N/A'}</a></p>
             </Col>
           </Row>
         </Container>

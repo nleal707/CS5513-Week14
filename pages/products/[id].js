@@ -60,7 +60,7 @@ export default function Product({ productData }) {
               <p><strong>Description:</strong> {productData.description || 'N/A'}</p>
             </Col>
             <Col className="col-12">
-              <p><strong>Price:</strong> {productData.price || 'N/A'}</p>
+              <p><strong>Price: $</strong> {productData.price || 'N/A'}</p>
             </Col>
             <Col className="col-12">
               <p><strong>Payment Link:</strong> <a href={productData.link || 'N/A'} target="_blank" rel="noopener noreferrer">{productData.link || 'N/A'}</a></p>
