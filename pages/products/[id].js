@@ -54,13 +54,16 @@ export default function Product({ productData }) {
         <Container className={utilStyles.space}>
           <Row className={utilStyles.lightText}>
             <Col className="col-12">
-              <p><strong>Email:</strong> {productData.email || 'N/A'}</p>
+              <p><strong>SKU:</strong> {productData.sku || 'N/A'}</p>
             </Col>
             <Col className="col-12">
-              <p><strong>Phone:</strong> {productData.phone || 'N/A'}</p>
+              <p><strong>Description:</strong> {productData.description || 'N/A'}</p>
             </Col>
             <Col className="col-12">
-              <p><strong>Company:</strong> {productData.company || 'N/A'}</p>
+              <p><strong>Price:</strong> {productData.price || 'N/A'}</p>
+            </Col>
+            <Col className="col-12">
+              <p><strong>Payment Link:</strong> {productData.link || 'N/A'}</p>
             </Col>
           </Row>
         </Container>
