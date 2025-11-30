@@ -60,7 +60,7 @@ export default function Contact({ contactData }) {
               <p><strong>Phone:</strong> <a href={`tel:${contactData.phone || 'N/A'}`} target="_blank" rel="noopener noreferrer">{contactData.phone || 'N/A'}</a></p>
             </Col>
             <Col className="col-12">
-              <p><strong>Company:</strong> <a href={`https://${contactData.website || 'N/A'}`} target="_blank" rel="noopener noreferrer">{contactData.company || 'N/A'}</a></p>
+              <p><strong>Company:</strong> <a href={`${contactData.website || 'N/A'}`} target="_blank" rel="noopener noreferrer">{contactData.company || 'N/A'}</a></p>
             </Col>
           </Row>
         </Container>
