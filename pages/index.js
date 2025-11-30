@@ -6,6 +6,8 @@ import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 // Import a function to fetch and sort blog post data from an external source. Changed from posts.js to posts-json.js.
 import { getSortedPostsData } from '../lib/posts-json';
+import { getSortedContactsData } from '../lib/contacts-json';
+
 // Import the Link component from Next.js for client-side navigation
 import Link from 'next/link';
 // Import a custom Date component to format and display dates
@@ -18,17 +20,19 @@ export async function getStaticProps() {
   // Fetch the sorted post data at build time
   // const allPostsData = getSortedPostsData();
   const allPostsData = await getSortedPostsData();
+  const allContactsData = await getSortedContactsData();
   // Return the fetched data as props to the Home component
   return {
     props: {
       allPostsData,
+      allContactsData
     },
     revalidate: 60
   };
 }
  
 // Define and export the Home component, which serves as the main page
-export default function Home ({ allPostsData }) {
+export default function Home ({ allPostsData, allContactsData }) {
   // The component returns JSX to be rendered to the screen
   return (
     <Layout home>
@@ -64,6 +68,21 @@ export default function Home ({ allPostsData }) {
               */}
             </li>
           ))}
+        </ul>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Contacts</h2>
+        <ul className={utilStyles.list}>
+          {allContactsData && allContactsData.length > 0 ? (
+            allContactsData.map(({ id, title }) => (
+              <li className={utilStyles.listItem} key={id}>
+                <Link href={`/contacts/${id}`}>{title}</Link>
+                <br />
+              </li>
+            ))
+          ) : (
+            <li className={utilStyles.listItem}>No contacts available</li>
+          )}
         </ul>
       </section>
     </Layout>
