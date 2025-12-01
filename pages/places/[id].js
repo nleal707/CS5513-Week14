@@ -46,10 +46,10 @@ export default function Place({ placeData }) {
   return (
     <Layout>
       <Head>
-        <title>{placeData.place_name || 'Place'}</title>
+        <title>{placeData.place_name || placeData.name || 'Place'}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{placeData.place_name || 'Place'}</h1>
+        <h1 className={utilStyles.headingXl}>{placeData.place_name || placeData.name || 'Place'}</h1>
         
         <Container className={utilStyles.space}>
           <Row className={utilStyles.lightText}>
