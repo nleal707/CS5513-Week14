@@ -43,7 +43,7 @@ export async function getStaticProps() {
 }
  
 // Define and export the Home component, which serves as the main page
-export default function Home ({ allPostsData, allContactsData, allProductsData, allTransactionsData, allSnacksData }) {
+export default function Home ({ allPostsData, allContactsData, allProductsData, allTransactionsData, allSnacksData, allPlacesData }) {
   // The component returns JSX to be rendered to the screen
   return (
     <Layout home>
