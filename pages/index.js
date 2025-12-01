@@ -8,6 +8,7 @@ import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts-json';
 import { getSortedContactsData } from '../lib/contacts-json';
 import { getSortedProductsData } from '../lib/products-json';
+import { getSortedTransactionsData } from '../lib/transactions-json';
 // Import the Link component from Next.js for client-side navigation
 import Link from 'next/link';
 // Import a custom Date component to format and display dates
@@ -22,6 +23,7 @@ export async function getStaticProps() {
   const allPostsData = await getSortedPostsData();
   const allContactsData = await getSortedContactsData();
   const allProductsData = await getSortedProductsData();
+  const allTransactionsData = await getSortedTransactionsData();
   // Return the fetched data as props to the Home component
   return {
     props: {
@@ -34,7 +36,7 @@ export async function getStaticProps() {
 }
  
 // Define and export the Home component, which serves as the main page
-export default function Home ({ allPostsData, allContactsData, allProductsData }) {
+export default function Home ({ allPostsData, allContactsData, allProductsData, allTransactionsData }) {
   // The component returns JSX to be rendered to the screen
   return (
     <Layout home>
