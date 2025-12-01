@@ -1,15 +1,24 @@
+.navWrapper {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
 .container {
   max-width: 36rem;
   padding: 0 1rem;
   margin: 3rem auto 6rem;
 }
- 
+
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
- 
+
 .backToHome {
   margin: 3rem 0 0;
 }

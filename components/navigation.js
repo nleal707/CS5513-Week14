@@ -25,10 +25,10 @@ export default function Navigation() {
 
   // The component returns JSX to be rendered
   return (
-    <Navbar bg="dark" variant="dark" expand="md" className="mb-4">
+    <Navbar bg="dark" variant="dark" expand="md" className="w-100 mb-4" style={{ marginTop: 0, padding: 0 }}>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+        <Nav className="justify-content-center w-100">
           {navLinks.map((link) => {
             // Check if current path matches the link path
             const isActive = currentPath === link.path || 
@@ -40,7 +40,7 @@ export default function Navigation() {
                 as={Link}
                 href={link.path}
                 active={isActive}
-                className={isActive ? 'fw-bold' : ''}
+                className={`${isActive ? 'fw-bold' : ''} px-3`}
               >
                 {link.label}
               </Nav.Link>

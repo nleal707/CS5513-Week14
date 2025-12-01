@@ -12,7 +12,7 @@ export const siteTitle = 'CS55.13 Simple Blog';
  
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -28,8 +28,11 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <Navigation />
-      <header className={styles.header}>
+      <div className={styles.navWrapper}>
+        <Navigation />
+      </div>
+      <div className={styles.container}>
+        <header className={styles.header}>
         {home ? (
           <>
             <Image
@@ -67,6 +70,7 @@ export default function Layout({ children, home }) {
         <Analytics />
         <SpeedInsights />
       </main>
-    </div>
+      </div>
+    </>
   );
 }
