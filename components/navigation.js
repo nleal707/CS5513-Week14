@@ -25,7 +25,7 @@ export default function Navigation() {
 
   // The component returns JSX to be rendered
   return (
-    <Navbar bg="dark" variant="dark" expand="md" className="w-100 mb-4" style={{ marginTop: 0, padding: 0 }}>
+    <Navbar expand="md" className="w-100 mb-4" style={{ marginTop: 0, padding: 0 }}>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="justify-content-center w-100">
@@ -40,7 +40,7 @@ export default function Navigation() {
                 as={Link}
                 href={link.path}
                 active={isActive}
-                className={`${isActive ? 'fw-bold' : ''} px-3`}
+                className={`${isActive ? 'fw-bold active' : ''} px-3`}
               >
                 {link.label}
               </Nav.Link>

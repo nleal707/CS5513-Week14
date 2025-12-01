@@ -1,16 +1,21 @@
 .navWrapper {
   width: 100%;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 .container {
   max-width: 36rem;
   padding: 0 1rem;
   margin: 3rem auto 6rem;
+  background-color: var(--color-bg-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  padding: 2rem;
 }
 
 .header {
