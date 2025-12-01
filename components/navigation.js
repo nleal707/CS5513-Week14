@@ -25,7 +25,7 @@ export default function Navigation() {
 
   // The component returns JSX to be rendered
   return (
-    <Navbar expand="md" className="w-100 mb-4" style={{ marginTop: 0, padding: 0 }}>
+    <Navbar expand="lg" className="w-100 mb-4" style={{ marginTop: 0, padding: 0 }}>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="justify-content-center w-100">
