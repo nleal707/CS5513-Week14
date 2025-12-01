@@ -102,6 +102,21 @@ export default function Home ({ allPostsData, allContactsData, allProductsData }
           )}
         </ul>
       </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Transactions</h2>
+        <ul className={utilStyles.list}>
+          {allTransactionsData && allTransactionsData.length > 0 ? (
+            allTransactionsData.map(({ id, title }) => (
+              <li className={utilStyles.listItem} key={id}>
+                <Link href={`/transactions/${id}`}>{title}</Link>
+                <br />
+              </li>
+            ))
+          ) : (
+            <li className={utilStyles.listItem}>No transactions available</li>
+          )}
+        </ul>
+      </section>
     </Layout>
   );
 }
