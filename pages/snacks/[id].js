@@ -46,16 +46,13 @@ export default function Snack({ snackData }) {
   return (
     <Layout>
       <Head>
-        <title>{snackData.title || 'Snack'}</title>
+        <title>{snackData.snack_name || 'Snack'}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{snackData.title || 'Snack'}</h1>
+        <h1 className={utilStyles.headingXl}>{snackData.snack_name || 'Snack'}</h1>
         
         <Container className={utilStyles.space}>
           <Row className={utilStyles.lightText}>
-            <Col className="col-12">
-              <p><strong>Snack Name:</strong> {snackData.snack_name || 'N/A'}</p>
-            </Col>
             <Col className="col-12">
               <p><strong>Description:</strong> {snackData.description || 'N/A'}</p>
             </Col>

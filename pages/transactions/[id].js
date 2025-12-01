@@ -46,16 +46,13 @@ export default function Transaction({ transactionData }) {
   return (
     <Layout>
       <Head>
-        <title>{transactionData.title || 'Transaction'}</title>
+        <title>{transactionData.cardholder || 'Transaction'}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{transactionData.title || 'Transaction'}</h1>
+        <h1 className={utilStyles.headingXl}>{transactionData.cardholder || 'Transaction'}</h1>
         
         <Container className={utilStyles.space}>
           <Row className={utilStyles.lightText}>
-            <Col className="col-12">
-              <p><strong>Cardholder:</strong> {transactionData.cardholder || 'N/A'}</p>
-            </Col>
             <Col className="col-12">
               <p><strong>Merchant:</strong> {transactionData.merchant || 'N/A'}</p>
             </Col>
