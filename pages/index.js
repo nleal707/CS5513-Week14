@@ -29,7 +29,8 @@ export async function getStaticProps() {
     props: {
       allPostsData,
       allContactsData,
-      allProductsData
+      allProductsData,
+      allTransactionsData
     },
     revalidate: 60
   };
