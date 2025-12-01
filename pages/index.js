@@ -10,6 +10,7 @@ import { getSortedContactsData } from '../lib/contacts-json';
 import { getSortedProductsData } from '../lib/products-json';
 import { getSortedTransactionsData } from '../lib/transactions-json';
 import { getSortedSnacksData } from '../lib/snacks-json';
+import { getSortedPlacesData } from '../lib/places-json';
 // Import the Link component from Next.js for client-side navigation
 import Link from 'next/link';
 // Import a custom Date component to format and display dates
@@ -26,6 +27,7 @@ export async function getStaticProps() {
   const allProductsData = await getSortedProductsData();
   const allTransactionsData = await getSortedTransactionsData();
   const allSnacksData = await getSortedSnacksData();
+  const allPlacesData = await getSortedPlacesData();
   // Return the fetched data as props to the Home component
   return {
     props: {
@@ -33,7 +35,8 @@ export async function getStaticProps() {
       allContactsData,
       allProductsData,
       allTransactionsData,
-      allSnacksData
+      allSnacksData,
+      allPlacesData
     },
     revalidate: 60
   };
@@ -135,6 +138,21 @@ export default function Home ({ allPostsData, allContactsData, allProductsData, 
             ))
           ) : (
             <li className={utilStyles.listItem}>No snacks available</li>
+          )}
+        </ul>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Places</h2>
+        <ul className={utilStyles.list}>
+          {allPlacesData && allPlacesData.length > 0 ? (
+            allPlacesData.map(({ id, title }) => (
+              <li className={utilStyles.listItem} key={id}>
+                <Link href={`/places/${id}`}>{title}</Link>
+                <br />
+              </li>
+            ))
+          ) : (
+            <li className={utilStyles.listItem}>No places available</li>
           )}
         </ul>
       </section>
