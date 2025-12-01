@@ -9,6 +9,7 @@ import { getSortedPostsData } from '../lib/posts-json';
 import { getSortedContactsData } from '../lib/contacts-json';
 import { getSortedProductsData } from '../lib/products-json';
 import { getSortedTransactionsData } from '../lib/transactions-json';
+import { getSortedSnacksData } from '../lib/snacks-json';
 // Import the Link component from Next.js for client-side navigation
 import Link from 'next/link';
 // Import a custom Date component to format and display dates
@@ -24,20 +25,22 @@ export async function getStaticProps() {
   const allContactsData = await getSortedContactsData();
   const allProductsData = await getSortedProductsData();
   const allTransactionsData = await getSortedTransactionsData();
+  const allSnacksData = await getSortedSnacksData();
   // Return the fetched data as props to the Home component
   return {
     props: {
       allPostsData,
       allContactsData,
       allProductsData,
-      allTransactionsData
+      allTransactionsData,
+      allSnacksData
     },
     revalidate: 60
   };
 }
  
 // Define and export the Home component, which serves as the main page
-export default function Home ({ allPostsData, allContactsData, allProductsData, allTransactionsData }) {
+export default function Home ({ allPostsData, allContactsData, allProductsData, allTransactionsData, allSnacksData }) {
   // The component returns JSX to be rendered to the screen
   return (
     <Layout home>
@@ -117,6 +120,21 @@ export default function Home ({ allPostsData, allContactsData, allProductsData, 
             ))
           ) : (
             <li className={utilStyles.listItem}>No transactions available</li>
+          )}
+        </ul>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Snacks</h2>
+        <ul className={utilStyles.list}>
+          {allSnacksData && allSnacksData.length > 0 ? (
+            allSnacksData.map(({ id, title }) => (
+              <li className={utilStyles.listItem} key={id}>
+                <Link href={`/snacks/${id}`}>{title}</Link>
+                <br />
+              </li>
+            ))
+          ) : (
+            <li className={utilStyles.listItem}>No snacks available</li>
           )}
         </ul>
       </section>
