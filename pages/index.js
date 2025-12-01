@@ -145,9 +145,9 @@ export default function Home ({ allPostsData, allContactsData, allProductsData, 
         <h2 className={utilStyles.headingLg}>Places</h2>
         <ul className={utilStyles.list}>
           {allPlacesData && allPlacesData.length > 0 ? (
-            allPlacesData.map(({ id, title }) => (
+            allPlacesData.map(({ id, place_name }) => (
               <li className={utilStyles.listItem} key={id}>
-                <Link href={`/places/${id}`}>{title}</Link>
+                <Link href={`/places/${id}`}>{place_name}</Link>
                 <br />
               </li>
             ))
